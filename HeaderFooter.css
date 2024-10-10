@@ -1,0 +1,60 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.screen {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: 45px 1fr 40px;
+    grid-template-areas: 
+    "containerHeader"
+    "containerMidden"
+    "footer"
+    ;
+}
+body {
+    font-family: "comic Sans MS", cursive,sans-serif;
+    background-color: rgb(195, 130, 255);
+}
+header {
+    font-size: larger;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.containerHeader {
+    grid-area: containerHeader;
+    background-color: aqua;
+    display: grid;
+    grid-template-columns: 1fr 25%;
+    grid-template-rows: 45px;
+    grid-template-areas:
+    'Hlinks Hrechts';
+}
+.welkom {
+    grid-area: Hlinks;
+    font-size: larger;
+    text-align: left;
+    margin-left: 0.1cm;
+}
+.terug {
+    grid-area: Hrechts;
+    text-align: right;
+    margin-right: 0.1cm;
+}
+.terug a:link, a:visited {
+    color: black;
+}
+.terug a:hover {
+    color: red;
+}
+.containerMidden {
+    grid-area: containerMidden;
+}
+.footer {
+    grid-area: footer;
+    background-color: aqua;
+    text-align: center;
+}

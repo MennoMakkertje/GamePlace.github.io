@@ -1,0 +1,41 @@
+@import url(HeaderFooter.css);
+
+.containerMidden {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 100px 100px;
+    grid-template-areas: 
+    'l1 r1'
+    'l2 r2'
+    ;
+}
+.uitleg {
+    grid-area: l1;
+    margin-left: 0.1cm;
+}
+.keuzemenu {
+    grid-area: l2;
+}
+
+ol {
+    list-style-type: circle;
+}
+.keuzemenu a:link, a:visited {
+    color: black;
+}
+.keuzemenu a:hover {
+    color: red;
+}
+
+.afbeeldingMemory {
+    grid-column: 2;
+    grid-row: 1 / -1;
+}
+#fotoMemory {
+    height: 500px;
+    max-width: 100%;
+    object-fit: contain;
+    float: right;
+    border-radius: 0px 0px 0px 20px;
+}
+

@@ -1,0 +1,137 @@
+@import url(HeaderFooter.css);
+
+.containerMidden {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr 125px;
+    grid-template-areas: 
+    "submit"
+    "game"
+    "scorebord"
+    ;
+}
+.btn {
+    grid-area: submit;
+    text-align: center;
+}
+#submitBtn, #restartBtn, #eindGame {
+    margin-top: 10px;
+    padding: 15px 15; /* Grotere binnenmarge */
+    font-size: 20px; /* Groter lettertype */
+    text-transform: uppercase;
+    background-color: white;
+}
+.speelveld {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    border: 2px solid black;
+    margin: 5px;
+    background-image: url('afbeeldingen/Accordion/wood-pattern.png');
+    /*background-color: #1f1100;*/
+}
+.speelveld img {
+    width: 150px;
+    height: 208.41px;
+    box-shadow: none;
+}
+#drawCard {
+    align-self: center;
+    visibility: hidden;
+    background-image: url('afbeeldingen/Accordion/back.png');
+    background-size: 150px 208.41px;
+    width: 150px;
+    height: 208.41px;
+    border-radius: 6%;
+}
+#drawCard p {
+    background-color: white;
+}
+
+.onderkantPagina {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "vergelijking score"
+    ;
+
+}
+.geklikteKaarten img {
+    width: 75px;
+    height: 104.21px;
+    
+}
+.meldingen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.geklikteKaarten {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    gap: 2px;
+    margin: 5px;
+}
+.geklikteKaarten p {
+    padding: 2px;
+}
+.foutmeldingen img {
+    width: 75px;
+    height: 104.2px;
+}
+.foutmeldingen {
+    visibility: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    border: none;
+    height: 104.2px;
+    margin: 5px;
+
+}
+#IMGerror {
+    animation-name: flikker;
+    animation-duration: 3s;
+    animation-play-state: paused;
+    animation-timing-function: ease-in;
+    
+}
+@keyframes flikker {
+    0%{
+        scale: 0;
+    }
+    70%{
+        transform: rotate(360deg);;
+    }
+    100%{
+        transform: rotate(360deg);;
+        scale: 1;
+ 
+    }
+}
+
+.foutmeldingen p {
+    padding: 2px;
+}
+.score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.scoreBord {
+    box-sizing: border-box;
+    width: fit-content;
+    display: flex;
+}
+.scoreBord p {
+    border: 2px solid black;
+    padding: 2px;
+    margin: 5px;
+}
