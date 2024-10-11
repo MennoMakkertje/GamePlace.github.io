@@ -1,3 +1,5 @@
+let flagMelding =  false;
+let flagVerleg = false;
 const submitBtn = document.getElementById("submitBtn");
 const restartBtn = document.getElementById("restartBtn");
 const aantalOpStabel = document.getElementById("aantalOpStabel");
@@ -12,7 +14,6 @@ const aantalVastgelopen = document.getElementById("aantalVastgelopen");
 const newIMG = document.createElement("img");
 const newBtn = document.createElement("button");
 const speelveld = document.querySelector('.speelveld');
-
 var drawCardButton = document.getElementById('drawCard');
 var deckID = "";
 const geklikteKaarten = document.querySelector('.geklikteKaarten');
@@ -126,13 +127,11 @@ function clickCardADD() {
 }
 
 function clickCard(event) {
-    ////////////////////verandedren naar === 1////////////////////////
-    if(infoCards.aantalOver === 1) {
-        drawCardButton.style.visibility = "hidden";
+    if(flagMelding === true || flagVerleg === true){
+        console.log("je moet wachten tot de foutmelding of vergelijking verdwenen is");
     }
+    else{
         const clickedImage = event.target;
-       
-
         if (clickedImage.tagName === 'IMG') {
             const allIMG = Array.from(document.querySelectorAll(".speelveld img"));
             const index = allIMG.indexOf(clickedImage);
@@ -150,6 +149,13 @@ function clickCard(event) {
                 foutmelding();
             }
         }
+        else if( clickedImage.tagName === 'BUTTON') {
+            ////////////////////verandedren naar === 1////////////////////////
+            if(infoCards.aantalOver === 1) {
+                drawCardButton.style.visibility = "hidden";
+            }
+        }
+    }
 }
 
 function infoGeklikt() {
@@ -210,6 +216,7 @@ return;
 }
 
 function verlegKaarten(klick2, klick1) {
+    flagVerleg = true;
 
     document.getElementById(infoCards.openKaarten[infoCards.geklikt[0]].code).style.boxShadow = "1px 1px 20px green";
     document.getElementById(infoCards.openKaarten[infoCards.geklikt[1]].code).style.boxShadow = "1px 1px 20px green";
@@ -249,6 +256,8 @@ function verlegKaarten(klick2, klick1) {
             foutmelding();
         }
         infoCards.geklikt = [];
+
+        flagVerleg = false;
         return;
     }, 1000);
 }
@@ -347,6 +356,13 @@ async function RestartGame() {
 }
 
 function foutmelding() {
+    flagMelding = true;
+
+    let allButtons = document.querySelectorAll('button');
+
+    allButtons.forEach(button => {
+        button.disabled = true;
+    });
 
     document.getElementById(infoCards.openKaarten[infoCards.geklikt[0]].code).style.boxShadow = "1px 1px 20px red";
     document.getElementById(infoCards.openKaarten[infoCards.geklikt[1]].code).style.boxShadow = "1px 1px 20px red";
@@ -380,6 +396,13 @@ function foutmelding() {
             imgFoutmeldingen.style.animation = 'none';
             error = "";
             infoCards.geklikt = [];
+
+            allButtons.forEach(button => {
+                button.disabled = false;
+            });
+
+            flagMelding = false;
         }, 4000);
+
     },1000);
 }
