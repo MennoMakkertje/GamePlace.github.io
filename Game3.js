@@ -327,7 +327,8 @@ function eind(event){
 }
 
 async function RestartGame() {
-    const returnURL = `https://www.deckofcardsapi.com/api/deck/${deckID}/return/`;
+    //const returnURL = `https://www.deckofcardsapi.com/api/deck/${deckID}/return/`;
+    const returnURL = `https://www.deckofcardsapi.com/api/deck/${deckID}/shuffle/`;
     const returnF = await fetch(returnURL);
     
     if(!returnF.ok){
